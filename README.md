@@ -93,7 +93,7 @@ cd backend
 cd frontend
 npm install
 npm run dev
-</details>
+
 
 📡 API Reference Example
 How a partner aggregator (e.g., Swiggy) registers a rider for an active shift block:
@@ -110,7 +110,4 @@ Content-Type: application/json
   "verifiedWeeklyBaseline": 4500.00,
   "riskTier": "TIER_1"
 }
-<div align="center">
-<p><b>Built for the Guidewire DEVTrails 2026 Unicorn Chase</b></p>
-<p><i>Phase 1 Submission</i></p>
-</div>
+
