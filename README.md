@@ -5,11 +5,10 @@
 
 [![Guidewire DEVTrails](https://img.shields.io/badge/Guidewire-DEVTrails_2026-blueviolet?style=for-the-badge)](https://#)
 [![Architecture](https://img.shields.io/badge/Architecture-B2B2C_Microservices-blue?style=for-the-badge)](https://#)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2-6DB33F?style=for-the-badge&logo=spring)](https://#)
-[![Python FastAPI](https://img.shields.io/badge/Python-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://#)
-[![React](https://img.shields.io/badge/React-18.0-61DAFB?style=for-the-badge&logo=react)](https://#)
+[![Backend](https://img.shields.io/badge/Backend-Java_Spring_Boot-6DB33F?style=for-the-badge&logo=spring)](https://#)
+[![AI Engine](https://img.shields.io/badge/AI-Python_FastAPI-009688?style=for-the-badge&logo=fastapi)](https://#)
 
-> [cite_start]*Automated, zero-touch income protection for India's 5 million delivery partners.* [cite: 2, 61]
+> *Automated, zero-touch income protection for India's 5 million delivery partners.*
 
 **[ 📺 View Demo Video ](#) • [ 📖 API Documentation ](#) • [ 📊 Pitch Deck ](#)**
 
@@ -17,50 +16,43 @@
 
 ---
 
-## ⚡ Executive Summary
+## 👥 The Persona: Who is our user, *really*?
+The standard narrative treats gig workers as a monolith. In reality, our user is a highly vulnerable, cash-dependent micro-entrepreneur. 
+* **The Reality of Multi-Homing:** They do not just drive for Zomato; they switch between Swiggy, Zepto, and Rapido depending on the hour. 
+* **The Financial Tightrope:** A Tier-1 delivery partner earns ₹3500–₹6000 weekly, heavily reliant on peak "surge" windows (e.g., the Dinner Rush).
+* **The Disruption Impact:** When a localized flash flood or sudden curfew hits, they don't just lose an hour of work—they lose the critical surge window that pays their rent. Traditional insurance, which requires 14 days to manually verify a claim, is useless to a worker who needs to buy groceries tonight. 
 
-### The Problem: Climate Vulnerability
-[cite_start]Gig workers (Zomato, Swiggy, Zepto) earn strictly by the delivery[cite: 4, 73]. [cite_start]When external disruptions hit—severe floods, extreme heatwaves (45°C+), or localized curfews—platforms halt operations[cite: 6]. [cite_start]The worker loses their daily wage instantly[cite: 7]. [cite_start]Traditional insurance fails this demographic due to high upfront costs, lengthy paperwork, and manual adjusters[cite: 9]. [cite_start]**Workers need their money today, not next month.** [cite: 10]
-
-### The Pivot: Why B2C Fails & B2B2C Wins
-[cite_start]A standalone direct-to-consumer (B2C) insurance app fails due to massive customer acquisition costs, GPS spoofing, and restricted access to verified income data[cite: 29].
-
-**GuardianGrid is a B2B2C PIaaS ecosystem.** We do not build apps for drivers. We provide a robust API engine embedded directly into the delivery aggregator's existing backend.
-* [cite_start]**🔒 100% Data Integrity:** The aggregator securely feeds us the worker's verified hourly earnings and live GPS zone[cite: 29, 49, 50].
-* [cite_start]**📡 Zero-Touch Execution:** We continuously poll environmental APIs (like the IMD)[cite: 17, 53]. [cite_start]If a zone floods, we trigger the payout[cite: 18, 54].
-* [cite_start]**💸 No Claim Filing:** Payouts are pushed instantly to the worker's digital wallet[cite: 20].
+**GuardianGrid** abandons the flawed B2C app model. We are a **B2B2C API ecosystem** embedded directly into aggregator apps, ensuring instant, zero-touch payouts when the weather halts their shift.
 
 ---
 
-## 🏗️ Enterprise Tech Stack & Architecture
+## 🧠 The Strategy: How does the AI *actually* work?
+Our system does not just blindly trust public weather APIs. It utilizes a **Spatial Anomaly Detection Engine** to prevent basis risk and fraud.
 
-Our architecture isolates high-velocity environmental data from strict financial ledgers to ensure ACID compliance at scale.
-
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Financial Engine** | `Java Spring Boot` | [cite_start]Orchestrates the weekly micro-premium deductions (2-3%), policy generation, and instant B2B UPI payout webhooks[cite: 35, 52]. |
-| **Risk & AI Module** | `Python / FastAPI` | [cite_start]Dynamically adjusts risk tiers based on historical disruption data and prevents spatial fraud[cite: 15, 33]. |
-| **Immutable Ledger** | `PostgreSQL` | [cite_start]Central relational database for active policies, B2B API keys, and strict financial transactions[cite: 47]. |
-| **Velocity Sink** | `MongoDB` | NoSQL data sink for continuous JSON streams from environmental APIs (IMD Weather, CPCB Pollution). |
-| **Frontend SDK** | `React / Tailwind` | [cite_start]Contains the "White-Label" rider UI SDK and the internal "God Mode" Admin Dashboard[cite: 21, 56]. |
+1. **The Ground Truth Mesh:** We ingest continuous JSON streams from the IMD (Weather) and CPCB (Air Quality) APIs into a high-velocity MongoDB database.
+2. **Spatial Cross-Referencing:** When a severe event is flagged (e.g., Rainfall > 50mm/hr), the Python/FastAPI ML engine cross-references the environmental data grid against the worker's live GPS coordinates provided by the aggregator's API. 
+3. **Anomaly Detection & Fraud Prevention:** Drawing on advanced pattern-recognition principles (similar to real-time road damage detection models), the AI evaluates the spatial validity of the claim. If the worker's phone telemetry shows them actively moving at 40km/h outside the flood zone, the AI flags it as a multi-homing fraud attempt and voids the payout.
+4. **Local Hardware Acceleration:** Model training and inference prototyping are optimized for local GPU execution, leveraging a dedicated 6GB VRAM pipeline for rapid iteration before cloud deployment.
 
 ---
 
-## 🧠 The "Shift Block Guarantee" Innovation
+## 🏗️ The Foundation: How does it get built?
+Handling automated micro-premiums alongside high-velocity data requires an enterprise-grade, strictly typed architecture to ensure transactional integrity.
 
-[cite_start]Paying a flat 70% of a week's income for a 2-hour storm bankrupts the insurer[cite: 39]. Calculating payouts by the minute results in insulting ₹50 payouts.
-
-**Our Mathematical Solution:** GuardianGrid utilizes **Shift Block Guarantees**.
-If a weather API confirms a disruption lasting **> 45 minutes** during a critical earning block (e.g., *Dinner Rush: 7 PM - 11 PM*), the system triggers a **flat lump-sum payout (e.g., ₹400)**. This provides meaningful relief to the worker while protecting the startup's actuarial balance sheet.
+* **Core Financial Engine (Java & Spring Boot):** The central orchestrator. It handles the weekly 2-3% micro-premium deductions, maintains state, and securely executes the instant B2B UPI webhooks when a payout is triggered. 
+* **Dual-Database Architecture:**
+    * **PostgreSQL:** The ACID-compliant immutable ledger for active policies, partner API keys, and strict financial transaction histories.
+    * **MongoDB:** The NoSQL velocity sink handling the thousands of external environmental API pings per minute, keeping the main ledger completely unblocked.
+* **The "Shift Block" Calculation:** To prevent the actuarial ruin of paying a full week's wages for a 2-hour storm, the Spring Boot engine calculates payouts using **Shift Blocks**. If a disruption lasts > 45 minutes during a critical earning window, it triggers a flat lump-sum payout (e.g., ₹400), dynamically balancing the startup's risk pool.
 
 ---
 
-## 🚀 Key Platform Features
+## 🚨 DEVTrails Economy & Meta-Game Strategy
+*We recognize that building the code is only half the battle. Surviving the 6-week Guidewire startup simulation requires rigorous capital management.*
 
-* **🔌 Plug-and-Play Aggregator Sandbox:** Secure REST endpoints allowing any delivery platform to register riders and sync live earnings in under 24 hours.
-* [cite_start]**⚡ Multi-Variable Parametric Triggers:** Built-in polling for Weather (IMD), Air Quality (CPCB), and hyper-local traffic gridlocks[cite: 15].
-* **🤖 GenAI Multilingual Notifications:** Uses LLMs to instantly translate payout alerts into the worker's regional language via WhatsApp (e.g., *"Vanakkam, Zone 4 is flooded. ₹400 deposited for your lost shift."*).
-* [cite_start]**🎮 "God Mode" Admin Panel:** A comprehensive React dashboard allowing administrators to inject simulated weather disruptions into specific city zones for system testing and auditing[cite: 21].
+* **The Market Crash Protocol:** We have explicitly accounted for the mandatory DC 8,000 market crash fine scheduled by the simulation. We are immediately allocating DC 3,000 to purchase the **Sabotage Shield**, securing our capital runway.
+* **Capital Efficiency:** By relying on our B2B2C embedded strategy, we drop simulated Customer Acquisition Costs (CAC) to near-zero. 
+* **Expertise Investment:** We have budgeted DC 8,000 for the Phase 3 Architecture Review to ensure our Java/Spring Boot backend receives a 5-star validation from Guidewire engineers.
 
 ---
 
@@ -69,7 +61,6 @@ If a weather API confirms a disruption lasting **> 45 minutes** during a critica
 <details>
 <summary><b>Click to expand local installation instructions</b></summary>
 
-GuardianGrid is containerized for rapid deployment.
 *Prerequisites: Docker, Docker Compose, JDK 17+, Python 3.10+, Node.js 18+.*
 
 ```bash
@@ -88,26 +79,3 @@ uvicorn main:app --reload --port 8000
 # 4. Start the Spring Boot Financial Engine
 cd backend
 ./mvnw spring-boot:run
-
-# 5. Start the React Admin Dashboard
-cd frontend
-npm install
-npm run dev
-
-
-📡 API Reference Example
-How a partner aggregator (e.g., Swiggy) registers a rider for an active shift block:
-
-JSON
-POST /api/v1/policies/activate
-Content-Type: application/json
-
-{
-  "aggregatorId": "agg_swiggy_001",
-  "workerId": "wk_998273",
-  "currentZone": "CHE-ZONE-4",
-  "shiftBlock": "DINNER_RUSH_1900_2300",
-  "verifiedWeeklyBaseline": 4500.00,
-  "riskTier": "TIER_1"
-}
-
