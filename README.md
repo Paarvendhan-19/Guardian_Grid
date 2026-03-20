@@ -3,56 +3,81 @@
 # 🛡️ GuardianGrid
 **Parametric Insurance-as-a-Service (PIaaS) for the Gig Economy**
 
-[![Guidewire DEVTrails](https://img.shields.io/badge/Guidewire-DEVTrails_2026-blueviolet?style=for-the-badge)](https://#)
-[![Architecture](https://img.shields.io/badge/Architecture-B2B2C_Microservices-blue?style=for-the-badge)](https://#)
-[![Backend](https://img.shields.io/badge/Backend-Java_Spring_Boot-6DB33F?style=for-the-badge&logo=spring)](https://#)
-[![AI Engine](https://img.shields.io/badge/AI-Python_FastAPI-009688?style=for-the-badge&logo=fastapi)](https://#)
+[![Guidewire DEVTrails](https://img.shields.io/badge/Guidewire-DEVTrails_2026-blueviolet?style=for-the-badge)](#)
+[![Architecture](https://img.shields.io/badge/Architecture-B2B2C_Microservices-blue?style=for-the-badge)](#)
+[![Backend](https://img.shields.io/badge/Backend-Java_Spring_Boot-6DB33F?style=for-the-badge&logo=spring)](#)
+[![AI Engine](https://img.shields.io/badge/AI-Python_FastAPI-009688?style=for-the-badge&logo=fastapi)](#)
 
-> *Automated, zero-touch income protection for India's 5 million delivery partners.*
+> *Automated, zero-touch income protection for India's ~5 million delivery partners.*
 
-**[ 📺 View Demo Video ](#) • [ 📖 API Documentation ](#) • [ 📊 Pitch Deck ](#)**
+**[ 📺 View Phase 1 Pitch Video ](#) • [ 📖 API Documentation ](#) • [ 📊 System Architecture ](#)**
 
 </div>
 
 ---
 
-## 👥 The Persona: Who is our user, *really*?
-The standard narrative treats gig workers as a monolith. In reality, our user is a highly vulnerable, cash-dependent micro-entrepreneur. 
-* **The Reality of Multi-Homing:** They do not just drive for Zomato; they switch between Swiggy, Zepto, and Rapido depending on the hour. 
-* **The Financial Tightrope:** A Tier-1 delivery partner earns ₹3500–₹6000 weekly, heavily reliant on peak "surge" windows (e.g., the Dinner Rush).
-* **The Disruption Impact:** When a localized flash flood or sudden curfew hits, they don't just lose an hour of work—they lose the critical surge window that pays their rent. Traditional insurance, which requires 14 days to manually verify a claim, is useless to a worker who needs to buy groceries tonight. 
+## 💡 Inspiration: Protecting the Vulnerable Micro-Entrepreneur
+The standard narrative treats gig workers as a monolith. In reality, our user is a highly vulnerable, cash-dependent micro-entrepreneur. A Tier-1 delivery partner earns approximately ₹3500–₹6000 weekly, heavily reliant on peak "surge" windows (like the Dinner Rush).
 
-**GuardianGrid** abandons the flawed B2C app model. We are a **B2B2C API ecosystem** embedded directly into aggregator apps, ensuring instant, zero-touch payouts when the weather halts their shift.
+When disruptions—heavy rainfall, localized floods, or extreme heat—occur, delivery services halt. The worker doesn't just lose an hour of work; they lose the critical surge window that pays their rent. We realized traditional insurance is fundamentally broken for this demographic. It requires high upfront costs, lengthy paperwork, and manual adjusters. A worker who loses their Tuesday night earnings needs money to buy groceries *tonight*, not next month. We were inspired to build a zero-friction, instantaneous safety net.
 
 ---
 
-## 🧠 The Strategy: How does the AI *actually* work?
-Our system does not just blindly trust public weather APIs. It utilizes a **Spatial Anomaly Detection Engine** to prevent basis risk and fraud.
+## 🚀 What it does: The B2B2C Pivot
+A standalone direct-to-consumer (B2C) insurance app fails in this demographic due to massive customer acquisition costs, GPS spoofing, and restricted access to verified income data.
 
-1. **The Ground Truth Mesh:** We ingest continuous JSON streams from the IMD (Weather) and CPCB (Air Quality) APIs into a high-velocity MongoDB database.
-2. **Spatial Cross-Referencing:** When a severe event is flagged (e.g., Rainfall > 50mm/hr), the Python/FastAPI ML engine cross-references the environmental data grid against the worker's live GPS coordinates provided by the aggregator's API. 
-3. **Anomaly Detection & Fraud Prevention:** Drawing on advanced pattern-recognition principles (similar to real-time road damage detection models), the AI evaluates the spatial validity of the claim. If the worker's phone telemetry shows them actively moving at 40km/h outside the flood zone, the AI flags it as a multi-homing fraud attempt and voids the payout.
-4. **Local Hardware Acceleration:** Model training and inference prototyping are optimized for local GPU execution, leveraging a dedicated 6GB VRAM pipeline for rapid iteration before cloud deployment.
-
----
-
-## 🏗️ The Foundation: How does it get built?
-Handling automated micro-premiums alongside high-velocity data requires an enterprise-grade, strictly typed architecture to ensure transactional integrity.
-
-* **Core Financial Engine (Java & Spring Boot):** The central orchestrator. It handles the weekly 2-3% micro-premium deductions, maintains state, and securely executes the instant B2B UPI webhooks when a payout is triggered. 
-* **Dual-Database Architecture:**
-    * **PostgreSQL:** The ACID-compliant immutable ledger for active policies, partner API keys, and strict financial transaction histories.
-    * **MongoDB:** The NoSQL velocity sink handling the thousands of external environmental API pings per minute, keeping the main ledger completely unblocked.
-* **The "Shift Block" Calculation:** To prevent the actuarial ruin of paying a full week's wages for a 2-hour storm, the Spring Boot engine calculates payouts using **Shift Blocks**. If a disruption lasts > 45 minutes during a critical earning window, it triggers a flat lump-sum payout (e.g., ₹400), dynamically balancing the startup's risk pool.
+**GuardianGrid abandons the B2C app model.** We are a **B2B2C API ecosystem** designed to be embedded directly into aggregator apps (Zomato, Swiggy, Zepto).
+1. **100% Data Integrity:** The aggregator securely feeds us the worker's verified hourly earnings and live GPS zone.
+2. **Zero-Touch Execution:** We continuously poll external environmental APIs (like the IMD). If a zone floods, we trigger the payout automatically.
+3. **No Claim Filing:** Payouts are pushed instantly to the worker's digital wallet via UPI.
 
 ---
 
-## 🚨 DEVTrails Economy & Meta-Game Strategy
-*We recognize that building the code is only half the battle. Surviving the 6-week Guidewire startup simulation requires rigorous capital management.*
+## 🧠 How we built it: Enterprise Architecture & AI
+Handling automated financial transactions alongside high-velocity environmental data required a strict, enterprise-grade architecture.
 
-* **The Market Crash Protocol:** We have explicitly accounted for the mandatory DC 8,000 market crash fine scheduled by the simulation. We are immediately allocating DC 3,000 to purchase the **Sabotage Shield**, securing our capital runway.
-* **Capital Efficiency:** By relying on our B2B2C embedded strategy, we drop simulated Customer Acquisition Costs (CAC) to near-zero. 
-* **Expertise Investment:** We have budgeted DC 8,000 for the Phase 3 Architecture Review to ensure our Java/Spring Boot backend receives a 5-star validation from Guidewire engineers.
+* **Core Financial Engine (`Java Spring Boot`):** The central orchestrator. Calculates weekly micro-premiums, maintains state, and executes B2B UPI webhooks without race conditions.
+* **Dual-Database Strategy:** * `PostgreSQL`: The ACID-compliant immutable ledger for active policies and strict financial histories.
+    * `MongoDB`: The NoSQL velocity sink handling thousands of external environmental API pings without blocking the main ledger.
+* **The AI Engine (`Python / FastAPI`):** Rather than draining worker batteries with continuous GPS telemetry, we engineered a **Battery-Safe Spatial Anomaly Engine**. We verify coordinates only *at the millisecond* a claim is triggered. To prevent multi-homing fraud (claiming a rain-out on one app while delivering for another), we utilize India's Account Aggregator (AA) framework to run lightweight, retrospective audits on bank deposits over a 30-day lifecycle. 
+
+*Note: AI model training and rapid local inference prototyping were accelerated utilizing a dedicated NVIDIA RTX 3050 (6GB VRAM) pipeline prior to cloud deployment.*
+
+---
+
+## ⚠️ Challenges we ran into
+**The Actuarial Ruin vs. Worker Insult Dilemma:** Initially, we attempted to calculate payouts on a "pro-rata minute" basis. If a worker makes ₹60/hour and is rained out for 90 minutes, paying them a 70% pro-rata claim yields a mathematically sound but insulting ₹63. Conversely, paying a flat 70% of their *entire week's* income for a 2-hour storm would bankrupt our startup instantly. We needed a mathematical middle ground.
+
+---
+
+## 🏆 Accomplishments that we're proud of
+We solved the actuarial math problem by abandoning minute-by-minute calculations in favor of **Shift Block Guarantees**. 
+
+If a weather API confirms a disruption lasting past a critical threshold during a surge window, the system triggers a flat lump-sum payout. Let $t_{disruption}$ be the duration of the severe weather event in minutes. Our instant payout function is defined as:
+
+$$Payout = \begin{cases} \text{₹}400, & \text{if } t_{disruption} \ge 45 \text{ min} \\ \text{₹}0, & \text{if } t_{disruption} < 45 \text{ min} \end{cases}$$
+
+This provides meaningful, instant relief to the worker while dynamically balancing the startup's risk pool.
+
+---
+
+## 🚨 DEVTrails Economy: Surviving the Market Crash
+*A mathematically sound product means nothing if the startup goes bankrupt. Here is how GuardianGrid is managing our initial DC 100,000 capital in Phase 1:*
+
+1. **The Market Crash Protocol:** We are fully aware of the impending DC 8,000 Market Crash penalty. To protect our runway, we are immediately allocating capital to purchase the **Sabotage Shield (DC 3,000)**, resulting in a net capital save of DC 5,000.
+2. **Lean Customer Acquisition (CAC):** By utilizing a B2B2C embedded API model rather than a standalone B2C app, our marketing and user-acquisition burn rate drops to near-zero.
+3. **Phase 3 Strategic Investment:** We are reserving DC 8,000 for the "Architecture Review" in the Expertise Marketplace to ensure our Spring Boot backend secures a 5-star validation.
+
+---
+
+## 📚 What we learned
+We learned the massive architectural difference between building a standard CRUD application and building a resilient, asynchronous event-driven financial system. Ensuring that our Spring Boot backend could safely parse a "Severe Weather Alert" from our Python AI, verify the aggregator's rider list, and trigger a mock payment gateway—all while maintaining strict ACID compliance—deepened our understanding of enterprise backend design. 
+
+---
+
+## 🔮 What's next for GuardianGrid
+1. **Closing the Sensor Gap (Basis Risk):** Government weather APIs often measure data at airports, kilometers away from flooded streets. Next, we will integrate **Traffic Gridlock Data** into our AI mesh. If the weather API says "Rain" AND the traffic API shows average zone speeds dropping below 5 km/h, the AI confirms the disruption is hyper-local.
+2. **Generative AI Notifications:** Integrating lightweight LLMs to instantly translate payout alerts into the worker's regional language via WhatsApp (e.g., *"Vanakkam, Zone 4 is flooded. ₹400 deposited for your lost shift."*).
 
 ---
 
@@ -65,8 +90,8 @@ Handling automated micro-premiums alongside high-velocity data requires an enter
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/your-team/GuardianGrid.git](https://github.com/your-team/GuardianGrid.git)
-cd GuardianGrid
+git clone [https://github.com/Shana-dude/GuideWire_DevTrails_26.git](https://github.com/Shana-dude/GuideWire_DevTrails_26.git)
+cd GuideWire_DevTrails_26
 
 # 2. Spin up the databases (PostgreSQL & MongoDB)
 docker-compose up -d
